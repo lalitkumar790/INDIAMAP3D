@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>भारत World — Uttar Pradesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Noto+Serif+Devanagari:wght@300;400;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/INDIAMAP3D/assets/index-NpqiWpED.js"></script>
+  <link rel="stylesheet" crossorigin href="/INDIAMAP3D/assets/index-BqHJ-GNo.css">
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <div id="sidebar-header">
+      <div class="sidebar-logo">भारत<span>World</span></div>
+      <div class="sidebar-sub">Select State</div>
+    </div>
+    <div id="state-list">
+      <button class="state-btn active" data-state="uttar_pradesh">
+        <span class="state-icon">🛕</span>
+        <span class="state-name">Uttar Pradesh</span>
+        <span class="state-badge">Live</span>
+      </button>
+      <button class="state-btn soon" data-state="rajasthan">
+        <span class="state-icon">🏜️</span>
+        <span class="state-name">Rajasthan</span>
+        <span class="state-badge soon-badge">Soon</span>
+      </button>
+      <button class="state-btn soon" data-state="maharashtra">
+        <span class="state-icon">🌊</span>
+        <span class="state-name">Maharashtra</span>
+        <span class="state-badge soon-badge">Soon</span>
+      </button>
+      <button class="state-btn soon" data-state="kerala">
+        <span class="state-icon">🌴</span>
+        <span class="state-name">Kerala</span>
+        <span class="state-badge soon-badge">Soon</span>
+      </button>
+      <button class="state-btn soon" data-state="punjab">
+        <span class="state-icon">✨</span>
+        <span class="state-name">Punjab</span>
+        <span class="state-badge soon-badge">Soon</span>
+      </button>
+      <button class="state-btn soon" data-state="tamilnadu">
+        <span class="state-icon">🏛️</span>
+        <span class="state-name">Tamil Nadu</span>
+        <span class="state-badge soon-badge">Soon</span>
+      </button>
+    </div>
+
+    <div id="city-list">
+      <div class="city-section-label">Cities in UP</div>
+      <button class="city-btn active" data-city="ayodhya">🛕 Ayodhya — Ram Mandir</button>
+      <button class="city-btn" data-city="vrindavan">🦚 Vrindavan — Banke Bihari</button>
+      <button class="city-btn" data-city="agra">🕌 Agra — Taj Mahal</button>
+      <button class="city-btn" data-city="varanasi">🪔 Varanasi — Kashi Ghat</button>
+      <button class="city-btn" data-city="lucknow">🏛️ Lucknow — Capital</button>
+      <button class="city-btn" data-city="mathura">🎵 Mathura — Janmabhoomi</button>
+    </div>
+
+    <div id="sidebar-controls">
+      <div class="ctrl-label">Controls</div>
+      <div class="ctrl-row"><span class="key">↑ S</span> Accelerate</div>
+      <div class="ctrl-row"><span class="key">↓ X</span> Brake</div>
+      <div class="ctrl-row"><span class="key">← A</span><span class="key">→ D</span> Steer</div>
+      <div class="ctrl-row"><span class="key">R</span> Weather cycle</div>
+      <div class="ctrl-row"><span class="key">M</span> Minimap</div>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <!-- Title screen -->
+    <div id="title-screen">
+      <div id="title-bg"></div>
+      <div id="title-content">
+        <div id="title-devanagari">उत्तर प्रदेश</div>
+        <h1 id="main-title">UTTAR PRADESH</h1>
+        <p id="main-subtitle">Drive the Sacred Rath of Surya across the land of Ram</p>
+        <div id="title-cities">
+          <span>🛕 Ayodhya</span>
+          <span>🕌 Taj Mahal</span>
+          <span>🦚 Vrindavan</span>
+          <span>🪔 Varanasi Ghats</span>
+        </div>
+        <button id="start-btn">Begin the Journey  →</button>
+      </div>
+    </div>
+
+    <!-- Location banner -->
+    <div id="location-banner" class="hidden">
+      <div id="loc-icon">🛕</div>
+      <div id="loc-info">
+        <div id="loc-name">Ayodhya</div>
+        <div id="loc-sub">Ram ki Paidi · Uttar Pradesh</div>
+      </div>
+    </div>
+
+    <!-- Weather bar -->
+    <div id="weather-bar">
+      <button class="wx active" data-wx="clear">☀️</button>
+      <button class="wx" data-wx="golden">🌅</button>
+      <button class="wx" data-wx="rain">🌧️</button>
+      <button class="wx" data-wx="storm">⛈️</button>
+      <button class="wx" data-wx="fog">🌫️</button>
+    </div>
+
+    <!-- Speedometer -->
+    <div id="speedo">
+      <svg id="speedo-arc" viewBox="0 0 100 60" width="120" height="72">
+        <path d="M10,55 A45,45 0 0,1 90,55" fill="none" stroke="rgba(255,200,80,0.15)" stroke-width="8" stroke-linecap="round"/>
+        <path id="speedo-fill" d="M10,55 A45,45 0 0,1 10,55" fill="none" stroke="#f5a623" stroke-width="8" stroke-linecap="round"/>
+      </svg>
+      <div id="speedo-num">0</div>
+      <div id="speedo-unit">km/h</div>
+    </div>
+
+    <!-- Monument popup -->
+    <div id="mon-popup" class="hidden">
+      <div id="mon-icon-el">🛕</div>
+      <div id="mon-title">Ram Mandir</div>
+      <div id="mon-desc">Sacred temple of Shri Ram</div>
+      <div id="mon-dist"></div>
+    </div>
+
+    <!-- Minimap -->
+    <div id="minimap-wrap" class="hidden">
+      <canvas id="minimap" width="200" height="200"></canvas>
+      <div class="minimap-label">उत्तर प्रदेश</div>
+    </div>
+  </div>
+
+</body>
+</html>

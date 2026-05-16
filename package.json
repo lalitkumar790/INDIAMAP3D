@@ -1,16 +1,20 @@
 {
   "name": "bharat-world",
   "version": "0.1.0",
+  "homepage": "https://lalitkumar790.github.io/INDIAMAP3D",
   "description": "Interactive 3D India — Explore by Rath across every state",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "three": "^0.167.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^5.0.0"
   }
 }
